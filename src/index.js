@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import userEvent from '@testing-library/user-event';
 
 const inputStyle = {
-  width: 235,
+  width: 250,
   margin: 5
 }
 
@@ -58,9 +58,9 @@ class MagicEightBall extends React.Component{
     ];
     const answer = possibleAnswers[this.state.randomIndex];
     return (
-      <div>
+      <div className='container'>
         <input type="text" value={this.state.userInput} onChange={this.handleChange} style={inputStyle} /><br />
-        <buton onClick={this.ask}>Ask the Magic Eight Ball!!</buton>
+        <button onClick={this.ask}>Ask the Magic 8 Ball!</button>
         <br />
         <h3>Answer:</h3>
         <p>{answer}</p>
