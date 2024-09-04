@@ -21,14 +21,20 @@ class MagicEightBall extends React.Component{
     this.ask = this.ask.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   ask(){
     if (this.state.userInput){
       this.setState({
-        randomIndex: Math.floor(Math.random()*20),
+        randomIndex: Math.floor(Math.random() * 20 + 1),
         userInput: ''
       });
+    } else {
+      this.setState({
+        randomIndex: 0
+      })
     }
   }
+
   handleChange(event){
     this.setState({
       userInput: event.target.value
@@ -36,6 +42,7 @@ class MagicEightBall extends React.Component{
   }
   render(){
     const possibleAnswers = [
+      'YOU HAVE TO ASK', //if the user don't ask but click the button
       'It is certain',
       'It is decidedly so',
       'Without a doubt',
@@ -60,11 +67,14 @@ class MagicEightBall extends React.Component{
     const answer = possibleAnswers[this.state.randomIndex];
     return (
       <div className='container'>
+        <h1>Fontune teller here</h1>
         <input type="text" value={this.state.userInput} onChange={this.handleChange} style={inputStyle} /><br />
         <button onClick={this.ask}>Ask the Magic 8 Ball!</button>
         <br />
         <h3>Answer:</h3>
-        <p>{answer}</p>
+        <p style={{color: 'green'}}>
+          {answer}
+        </p>
       </div>
     )
   }
